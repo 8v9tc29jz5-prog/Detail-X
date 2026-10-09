@@ -1,652 +1,246 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detail X | Professional Auto Detailing</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b0b0b;
-      color: white;
-      line-height: 1.6;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(10, 10, 10, 0.95);
-      border-bottom: 1px solid #292929;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .logo span {
-      color: #f5c400;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    nav a:hover {
-      color: #f5c400;
-    }
-
-    .hero {
-      min-height: 85vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      background:
-        radial-gradient(circle at center, #242424 0%, #0b0b0b 65%);
-    }
-
-    .hero h1 {
-      font-size: clamp(50px, 9vw, 100px);
-      font-weight: 900;
-      letter-spacing: 5px;
-    }
-
-    .hero h1 span {
-      color: #f5c400;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: 20px auto;
-      color: #cfcfcf;
-      font-size: 19px;
-    }
-
-    .button {
-      display: inline-block;
-      background: #f5c400;
-      color: #080808;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 900;
-      margin-top: 15px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.2s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      background: #ffd52e;
-    }
-
-    section {
-      padding: 80px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 45px;
-    }
-
-    .section-title span {
-      color: #f5c400;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: #151515;
-      border: 1px solid #292929;
-      padding: 30px;
-      border-radius: 15px;
-      transition: 0.25s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #f5c400;
-    }
-
-    .card h3 {
-      color: #f5c400;
-      margin-bottom: 10px;
-      font-size: 23px;
-    }
-
-    .card p {
-      color: #bdbdbd;
-    }
-
-    .about {
-      background: #111;
-    }
-
-    .about-content {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-      color: #cfcfcf;
-      font-size: 18px;
-    }
-
-    .booking {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 14px;
-      border-radius: 8px;
-      border: 1px solid #333;
-      background: #151515;
-      color: white;
-      font-size: 16px;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #f5c400;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .signature-box {
-      margin-top: 25px;
-      background: #151515;
-      border: 1px solid #333;
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    .signature-box h3 {
-      margin-bottom: 10px;
-      color: #f5c400;
-    }
-
-    #signatureCanvas {
-      width: 100%;
-      height: 220px;
-      background: white;
-      border-radius: 8px;
-      display: block;
-      touch-action: none;
-      cursor: crosshair;
-    }
-
-    .signature-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-
-    .clear-btn {
-      background: #333;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .clear-btn:hover {
-      background: #444;
-    }
-
-    .confirm-btn {
-      background: #f5c400;
-      color: #080808;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .confirm-btn:hover {
-      background: #ffd52e;
-    }
-
-    #status {
-      margin-top: 15px;
-      font-weight: bold;
-      color: #f5c400;
-      min-height: 25px;
-    }
-
-    footer {
-      border-top: 1px solid #292929;
-      text-align: center;
-      padding: 30px;
-      color: #888;
-      background: #080808;
-    }
-
-    footer strong {
-      color: #f5c400;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      nav a {
-        margin: 0 8px;
-        font-size: 14px;
-      }
-
-      section {
-        padding: 60px 5%;
-      }
-
-      .hero {
-        min-height: 75vh;
-      }
-
-      .hero h1 {
-        font-size: 55px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detail X | Auto Detailing</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#0b0b0b;color:white;font-family:Arial,sans-serif;line-height:1.6}
+header{position:sticky;top:0;background:#101010;border-bottom:1px solid #333;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:15px;z-index:2}
+.logo{font-size:26px;font-weight:900;letter-spacing:2px}
+span,.accent{color:#f5c400}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#f5c400}
+.hero{text-align:center;padding:100px 20px;background:radial-gradient(ellipse,#292929,#0b0b0b)}
+.hero h1{font-size:clamp(45px,9vw,85px);margin:0;letter-spacing:4px}
+.hero p{color:#ccc;max-width:600px;margin:15px auto}
+.button,button{background:#f5c400;color:#111;border:0;border-radius:7px;padding:13px 20px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
+section{padding:65px 6%}
+h2{text-align:center;font-size:34px;margin:0 0 30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card,.panel{background:#161616;border:1px solid #333;border-radius:12px;padding:24px}
+.card h3{color:#f5c400}
+.card p,.muted{color:#ccc}
+#about{background:#111;text-align:center}
+#about p{max-width:750px;margin:auto;color:#ccc}
+.panel{max-width:750px;margin:auto}
+label{display:block;font-weight:bold;margin:17px 0 6px}
+input,select,textarea{width:100%;padding:13px;background:#0c0c0c;color:white;border:1px solid #444;border-radius:7px;font:inherit}
+textarea{min-height:100px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid #f5c400}
+canvas{display:block;width:100%;height:200px;background:white;border-radius:7px;touch-action:none;cursor:crosshair}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.secondary{background:#333;color:white}
+#status{margin-top:15px;color:#f5c400;overflow-wrap:anywhere}
+footer{text-align:center;padding:25px;border-top:1px solid #333;color:#aaa}
+@media(max-width:600px){header{flex-direction:column}nav{justify-content:center}.hero{padding:75px 15px}section{padding:50px 5%}}
+</style>
 </head>
-
 <body>
+<header>
+  <div class="logo">DETAIL <span>X</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#booking">Book Now</a>
+  </nav>
+</header>
 
-  <!-- NAVIGATION -->
-  <header>
-    <div class="logo">DETAIL <span>X</span></div>
+<section class="hero" id="home">
+  <h1>DETAIL <span>X</span></h1>
+  <p>Professional auto detailing with attention to every detail. Get your vehicle looking fresh and clean.</p>
+  <a class="button" href="#booking">BOOK YOUR DETAIL</a>
+</section>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#booking">Book</a>
-    </nav>
-  </header>
+<section id="services">
+  <h2>OUR <span>SERVICES</span></h2>
+  <div class="cards">
+    <div class="card"><h3>Interior Detail</h3><p>Vacuuming, interior surfaces, carpets, seats and detailed cleaning.</p></div>
+    <div class="card"><h3>Exterior Detail</h3><p>Exterior wash, wheels, tires and windows.</p></div>
+    <div class="card"><h3>Full Detail</h3><p>Interior and exterior cleaning for a complete refresh.</p></div>
+    <div class="card"><h3>Custom Service</h3><p>Have a special request? Tell us what your vehicle needs.</p></div>
+  </div>
+</section>
 
+<section id="about">
+  <h2>ABOUT <span>DETAIL X</span></h2>
+  <p>Detail X is dedicated to quality vehicle detailing, careful work and making every vehicle look its best.</p>
+</section>
 
-  <!-- HOME -->
-  <section class="hero" id="home">
-    <div>
-      <h1>DETAIL <span>X</span></h1>
+<section id="booking">
+  <h2>BOOK &amp; <span>SIGN</span></h2>
+  <div class="panel">
+    <p class="muted">Fill out the form and sign below. Your booking will be submitted to Detail X.</p>
 
-      <p>
-        Professional auto detailing focused on making your vehicle look
-        cleaner, fresher, and better than ever.
-      </p>
+    <form id="bookingForm" action="https://formspree.io/f/xgaoyeje" method="POST">
+      <label for="name">Customer Name *</label>
+      <input id="name" name="Customer Name" autocomplete="name" required>
 
-      <a href="#booking" class="button">BOOK YOUR DETAIL</a>
-    </div>
-  </section>
+      <label for="email">Your Email (optional)</label>
+      <input id="email" name="Customer Email" type="email" autocomplete="email">
 
+      <label for="vehicle">Vehicle *</label>
+      <input id="vehicle" name="Vehicle" placeholder="Year, make and model" required>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <h2 class="section-title">OUR <span>SERVICES</span></h2>
+      <label for="service">Service *</label>
+      <select id="service" name="Requested Service" required>
+        <option value="">Choose a service</option>
+        <option>Interior Detail</option>
+        <option>Exterior Detail</option>
+        <option>Full Detail</option>
+        <option>Custom Service</option>
+      </select>
 
-    <div class="services">
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="Additional Notes" placeholder="Vehicle condition or special requests"></textarea>
 
-      <div class="card">
-        <h3>Interior Detail</h3>
-        <p>
-          Complete interior cleaning including vacuuming,
-          surfaces, carpets, seats, and hard-to-reach areas.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Exterior Detail</h3>
-        <p>
-          Thorough exterior wash, wheels, tires, windows,
-          and paint-safe cleaning.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Full Detail</h3>
-        <p>
-          Interior and exterior detailing combined for
-          a complete vehicle refresh.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Custom Service</h3>
-        <p>
-          Need something specific? Tell us what your vehicle
-          needs and we'll build a service around it.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <h2 class="section-title">ABOUT <span>DETAIL X</span></h2>
-
-    <div class="about-content">
-      <p>
-        Detail X is dedicated to providing high-quality vehicle
-        detailing with attention to the small things. Our goal is
-        simple: make every vehicle leave looking its best.
-      </p>
-    </div>
-  </section>
-
-
-  <!-- BOOKING -->
-  <section id="booking">
-    <h2 class="section-title">BOOK & <span>SIGN</span></h2>
-
-    <div class="booking">
-
-      <div class="form-group">
-        <label for="name">Customer Name</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Enter your name"
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="vehicle">Vehicle</label>
-        <input
-          type="text"
-          id="vehicle"
-          placeholder="Example: 2026 Jeep Grand Cherokee"
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="service">Choose a Service</label>
-
-        <select id="service">
-          <option value="">Select a service</option>
-          <option>Interior Detail</option>
-          <option>Exterior Detail</option>
-          <option>Full Detail</option>
-          <option>Custom Service</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="notes">Additional Notes</label>
-
-        <textarea
-          id="notes"
-          placeholder="Tell us anything we should know about the vehicle..."
-        ></textarea>
-      </div>
-
-
-      <!-- ELECTRONIC SIGNATURE -->
-      <div class="signature-box">
-
-        <h3>Electronic Signature</h3>
-
-        <p style="color:#aaa; margin-bottom:15px;">
-          Use your finger, stylus, mouse, or trackpad to sign below.
-        </p>
-
-        <canvas id="signatureCanvas"></canvas>
-
-        <div class="signature-buttons">
-          <button class="clear-btn" onclick="clearSignature()">
-            Clear Signature
-          </button>
-
-          <button class="confirm-btn" onclick="confirmSignature()">
-            Confirm Signature
-          </button>
+      <div style="margin-top:25px">
+        <h3 class="accent">Electronic Signature *</h3>
+        <p class="muted">Sign in the white box using your finger, stylus or mouse.</p>
+        <canvas id="signature" aria-label="Signature drawing area"></canvas>
+        <div class="actions">
+          <button type="button" class="secondary" id="clearSignature">Clear Signature</button>
         </div>
-
-        <div id="status"></div>
-
       </div>
 
-    </div>
-  </section>
+      <input type="hidden" id="signatureData" name="Signature PNG data">
+      <input type="hidden" name="Signature Confirmation" value="Customer confirmed the signature shown in this submission.">
 
+      <p class="muted">By submitting, you confirm that the booking details are accurate and that you intend to provide the signature shown above.</p>
+      <button type="submit" id="submitButton">SUBMIT BOOKING</button>
+      <div id="status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>
-      © 2026 <strong>Detail X</strong> — Professional Auto Detailing
-    </p>
-  </footer>
+<footer>© 2026 <strong class="accent">Detail X</strong> — Professional Auto Detailing</footer>
 
+<script>
+const canvas = document.getElementById("signature");
+const ctx = canvas.getContext("2d");
+let drawing = false;
+let hasInk = false;
+let lastPoint = null;
 
-  <!-- JAVASCRIPT -->
-  <script>
+function resizeCanvas() {
+  const saved = hasInk ? canvas.toDataURL("image/png") : null;
+  const rect = canvas.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = Math.round(rect.width * ratio);
+  canvas.height = Math.round(rect.height * ratio);
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.strokeStyle = "#111";
+  if (saved) {
+    const img = new Image();
+    img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
+    img.src = saved;
+  }
+}
 
-    const canvas = document.getElementById("signatureCanvas");
-    const ctx = canvas.getContext("2d");
+function pointFromEvent(e) {
+  const r = canvas.getBoundingClientRect();
+  return {x:e.clientX-r.left, y:e.clientY-r.top};
+}
 
-    let drawing = false;
-    let hasSignature = false;
+canvas.addEventListener("pointerdown", e => {
+  e.preventDefault();
+  drawing = true;
+  hasInk = true;
+  lastPoint = pointFromEvent(e);
+  canvas.setPointerCapture(e.pointerId);
+  ctx.beginPath();
+  ctx.moveTo(lastPoint.x, lastPoint.y);
+  ctx.lineTo(lastPoint.x + 0.1, lastPoint.y + 0.1);
+  ctx.stroke();
+});
 
+canvas.addEventListener("pointermove", e => {
+  if (!drawing) return;
+  e.preventDefault();
+  const p = pointFromEvent(e);
+  ctx.beginPath();
+  ctx.moveTo(lastPoint.x, lastPoint.y);
+  ctx.lineTo(p.x, p.y);
+  ctx.stroke();
+  lastPoint = p;
+});
 
-    function resizeCanvas() {
+function stopDrawing() {
+  drawing = false;
+  lastPoint = null;
+}
+canvas.addEventListener("pointerup", stopDrawing);
+canvas.addEventListener("pointercancel", stopDrawing);
 
-      const oldImage = canvas.width > 0 && canvas.height > 0
-        ? canvas.toDataURL()
-        : null;
+document.getElementById("clearSignature").addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasInk = false;
+  document.getElementById("signatureData").value = "";
+  document.getElementById("status").textContent = "";
+});
 
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
-      canvas.width = canvas.offsetWidth * ratio;
-      canvas.height = canvas.offsetHeight * ratio;
+const form = document.getElementById("bookingForm");
+const status = document.getElementById("status");
+const submitButton = document.getElementById("submitButton");
 
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  status.textContent = "";
 
-      ctx.lineWidth = 2.5;
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-      ctx.strokeStyle = "#111";
+  if (!hasInk) {
+    status.textContent = "Please sign before submitting your booking.";
+    return;
+  }
 
-      if (oldImage) {
-        const image = new Image();
+  // Include the signature as an image attachment in the Formspree submission.
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+  if (!blob) {
+    status.textContent = "Couldn't prepare the signature. Please try again.";
+    return;
+  }
 
-        image.onload = function () {
-          ctx.drawImage(
-            image,
-            0,
-            0,
-            canvas.offsetWidth,
-            canvas.offsetHeight
-          );
-        };
+  const data = new FormData(form);
+  data.delete("Signature PNG data");
+  data.delete("Signature Confirmation");
+  data.append("Signature", blob, "detail-x-signature.png");
+  data.append("Signature Confirmation", "Customer confirmed the signature shown in this submission.");
 
-        image.src = oldImage;
-      }
-    }
+  submitButton.disabled = true;
+  submitButton.textContent = "SENDING...";
 
-
-    function getPosition(event) {
-
-      const rect = canvas.getBoundingClientRect();
-
-      let clientX;
-      let clientY;
-
-      if (event.touches && event.touches.length > 0) {
-        clientX = event.touches[0].clientX;
-        clientY = event.touches[0].clientY;
-      } else {
-        clientX = event.clientX;
-        clientY = event.clientY;
-      }
-
-      return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
-      };
-    }
-
-
-    function startDrawing(event) {
-
-      event.preventDefault();
-
-      drawing = true;
-      hasSignature = true;
-
-      const position = getPosition(event);
-
-      ctx.beginPath();
-      ctx.moveTo(position.x, position.y);
-    }
-
-
-    function draw(event) {
-
-      if (!drawing) return;
-
-      event.preventDefault();
-
-      const position = getPosition(event);
-
-      ctx.lineTo(position.x, position.y);
-      ctx.stroke();
-    }
-
-
-    function stopDrawing(event) {
-
-      if (event) {
-        event.preventDefault();
-      }
-
-      drawing = false;
-      ctx.closePath();
-    }
-
-
-    canvas.addEventListener("mousedown", startDrawing);
-    canvas.addEventListener("mousemove", draw);
-    canvas.addEventListener("mouseup", stopDrawing);
-    canvas.addEventListener("mouseleave", stopDrawing);
-
-    canvas.addEventListener("touchstart", startDrawing, {
-      passive: false
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: {Accept: "application/json"}
     });
 
-    canvas.addEventListener("touchmove", draw, {
-      passive: false
-    });
-
-    canvas.addEventListener("touchend", stopDrawing, {
-      passive: false
-    });
-
-
-    function clearSignature() {
-
-      ctx.clearRect(
-        0,
-        0,
-        canvas.offsetWidth,
-        canvas.offsetHeight
-      );
-
-      hasSignature = false;
-
-      document.getElementById("status").textContent = "";
+    if (response.ok) {
+      status.textContent = "Booking submitted! Thank you for choosing Detail X.";
+      form.reset();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasInk = false;
+    } else {
+      status.textContent = "Submission failed. Please check your Formspree setup and try again.";
     }
-
-
-    function confirmSignature() {
-
-      const name = document.getElementById("name").value.trim();
-      const vehicle = document.getElementById("vehicle").value.trim();
-      const service = document.getElementById("service").value;
-
-      const status = document.getElementById("status");
-
-
-      if (!name) {
-        status.textContent = "Please enter your name.";
-        return;
-      }
-
-      if (!vehicle) {
-        status.textContent = "Please enter your vehicle.";
-        return;
-      }
-
-      if (!service) {
-        status.textContent = "Please choose a service.";
-        return;
-      }
-
-      if (!hasSignature) {
-        status.textContent = "Please sign in the signature box.";
-        return;
-      }
-
-
-      status.textContent =
-        "✓ Signature captured! Your Detail X request is ready.";
-    }
-
-
-    window.addEventListener("resize", resizeCanvas);
-
-    resizeCanvas();
-
-  </script>
-
+  } catch (err) {
+    status.textContent = "Couldn't connect. Check your internet and try again.";
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "SUBMIT BOOKING";
+  }
+});
+</script>
 </body>
 </html>
